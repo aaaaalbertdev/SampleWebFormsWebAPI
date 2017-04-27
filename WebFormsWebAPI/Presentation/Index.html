@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="Content/bootstrap.css">
+    <script src="Scripts/jquery-3.1.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+</head>
+<body class="input-sm">
+    <div class="body-content">
+        <div class="container">
+            <div class="row">
+                <h3>Employees</h3>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="disEmployees">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus-sign"></span> New Record</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-9 pull-right">
+                                        <div class="row form-horizontal">
+                                            <label class="col-md-3" style="vertical-align:central;">Filter By</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-hover table-striped" id="tblEmployees">
+                                        <thead>
+                                            <tr>
+                                                <th>Employee ID</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="detEmployees">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a id="btnBack" class="btn btn-default btn-sm" href="#disEmployees" aria-controls="disEmployees" role="tab" data-toggle="tab">&laquo; Back</a>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="row form-horizontal">
+                                            <div class="col-md-6">
+                                                <label>Employee ID</label><input id="txtEmpId" type="text" class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="row form-horizontal">
+                                            <div class="col-md-6">
+                                                <label>First Name</label><input id="txtFName" type="text" class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="row form-horizontal">
+                                            <div class="col-md-6">
+                                                <label>Last Name</label><input id="txtLName" type="text" class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="row form-horizontal">
+                                            <div class="col-md-6">
+                                                <label>Status</label>
+                                                <select id="selStatus" class="form-control input-sm">
+                                                    <option value="Active">Active</option>
+                                                    <option value="Transferred">Transferred</option>
+                                                    <option value="Resigned">Resigned</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            getEmployees();
+
+            function getEmployees() {
+                $.ajax({
+                    type: "GET",
+                    url: "api/Employees/GetEmployees/",
+                    data: { status: 'Transferred' },
+                    contentType: "json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#tblEmployees tbody').empty();
+                        $.each(data, function (key, value) {
+                            var jsonData = JSON.stringify(value);
+                            var objData = $.parseJSON(jsonData);
+                            var id = objData.EmployeeID;
+                            var fname = objData.FirstName;
+                            var lname = objData.LastName;
+                            var status = objData.Status;
+                            var btnId = "btn_" + id;
+                            var btn = '<a id="' + btnId + '" class="btn btn-default btn-sm" href="#detEmployees" aria-controls="detEmployees" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-edit"></span></a>'
+
+                            $('<tr><td>' + id + '</td><td>' + fname + '</td><td>' + lname + '</td><td>' + status + '</td><td>' + btn + '</td></tr>').appendTo('#tblEmployees');
+                            $('#' + btnId).unbind('click');
+                            $('#' + btnId).click(function () {
+                                getEmployee(id);
+                            });
+
+                        });
+                    },
+                    failure: function (response) {
+
+                    }
+                });
+            };
+
+            function getEmployee(id) {
+                $.ajax({
+                    type: "GET",
+                    url: "api/Employees/GetEmployeeById/" + id,
+                    contentType: "json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        
+                        var id = data.EmployeeID;
+                        var fname = data.FirstName;
+                        var lname = data.LastName;
+                        var status = data.Status;
+                        
+                        $('#txtEmpId').val(id);
+                        $('#txtFName').val(fname);
+                        $('#txtLName').val(lname);
+                        $('#selStatus').val(status);
+
+                    },
+                    failure: function (response) {
+
+                    }
+                });
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\Presentation.dll.config
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\Presentation.dll
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\Presentation.pdb
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\Entities.dll
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\Newtonsoft.Json.dll
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\System.Net.Http.Formatting.dll
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\System.Web.Http.dll
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\System.Web.Http.WebHost.dll
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\Entities.pdb
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\Newtonsoft.Json.xml
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\System.Net.Http.Formatting.xml
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\System.Web.Http.xml
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\bin\System.Web.Http.WebHost.xml
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\obj\Debug\Presentation.dll
+C:\Users\martiab\Desktop\Test_WebFormsWebAPI\WebFormsWebAPI\Presentation\obj\Debug\Presentation.pdb
